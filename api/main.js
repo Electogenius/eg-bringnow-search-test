@@ -7,7 +7,7 @@ export default (req) => {
       if (response.ok) return response.text()
       throw new Error('err')
     }).then((a) => {
-      var data = JSON.parse(a);
+     /* var data = JSON.parse(a);
       for(var i of data.items) {
         res.push({
           type: 'github',
@@ -16,7 +16,8 @@ export default (req) => {
           link: i.html_url,
           site: 'GitHub'
         });
-      }
+      }*/
+      console.log(a)
       req.respond({ body: res });
     });
 };
