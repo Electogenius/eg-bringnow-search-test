@@ -7,7 +7,7 @@ export default (req) => {
       if (response.ok) return response.json()
       throw new Error('err')
     }).then((a) => {
-      var data = JSON.parse(a);
+      var data = a;
       for(var i of data.items) {
         res.push({
           type: 'github',
