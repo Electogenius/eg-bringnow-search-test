@@ -6,7 +6,7 @@ export default (req) => {
       if (response.ok) return response.json()
       throw new Error('Network response was not ok.')
     })
-    .then(data => console.log(data.contents));
+    .then(data => req.respond({ body: data.contents });
 
   // GitHub
   /* fetch(`https://api.github.com/search/repositories?q=${decodeURIComponent(req.url.split('?search=')[1])}&per_page=100`)
