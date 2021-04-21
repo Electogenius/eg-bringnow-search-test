@@ -3,7 +3,7 @@ export default (req) => {
 
   fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${decodeURIComponent(req.url.split('?search=')[1])}&per_page=100`)}`)
     .then(response => {
-      if (response.ok) return response.json()
+      if (response.ok) return response.text()
       throw new Error('Network response was not ok.')
     })
     .then(data => {
