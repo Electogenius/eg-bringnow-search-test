@@ -17,7 +17,7 @@ export default (req) => {
           site: 'GitHub'
         });
       }*/
-      console.log(a)
+      console.log(a);
       req.respond({ body: res });
     });
 };
