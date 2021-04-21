@@ -6,7 +6,7 @@ export default (req) => {
       if (response.ok) return response.json()
       throw new Error('Network response was not ok.')
     })
-    .then(data => req.respond({ body: data });
+    .then(data => req.respond({ body: data }));
   /*.then(data => {
     data = data.json().contents;
     /*data.items.forEach(i => {
