@@ -3,7 +3,7 @@ export default (req) => {
 
   fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${decodeURIComponent(req.url.split('?search=')[1])}&per_page=100`)}`)
     .then(data => {
-      data = JSON.parse(data.json().contents);
+      data = data.json().contents;
       data.items.forEach(i => {
         res.push({
           type: 'github',
