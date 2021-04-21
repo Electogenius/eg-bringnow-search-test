@@ -1,3 +1,3 @@
 export default (req) => {
-	req.respond({ body: 'uhh' });
+  req.respond({ body: req.url });
 };
