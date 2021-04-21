@@ -4,7 +4,7 @@ export default (req) => {
   fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${decodeURIComponent(req.url.split('?search=')[1])}&per_page=100`)}`)
     .then(data => {
       data = data.json().contents;
-      JSON.parse(data).items.forEach(i => {
+      /*data.items.forEach(i => {
         res.push({
           type: 'github',
           title: i.full_name,
@@ -12,8 +12,8 @@ export default (req) => {
           link: i.html_url,
           site: 'GitHub'
         })
-      })
-      req.respond({ body: res })
+      })*/
+      req.respond({ body: /*res*/data })
     });
 
   // GitHub
