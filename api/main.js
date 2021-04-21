@@ -16,7 +16,7 @@ export default (req) => {
           site: 'GitHub'
         })
       })*/
-      req.respond({ body: Array.isArray(data.items) })
+      req.respond({ body: JSON.parse(data).total_count })
     });
   /*.then(data => {
     data = data.json().contents;
