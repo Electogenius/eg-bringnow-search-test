@@ -2,7 +2,7 @@ export default (req) => {
   var res = [];
 
   // GitHub
-  fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${decodeURIComponent(req.url.split('?search=')[1])}&per_page=100`)
+  fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${decodeURIComponent(req.url.split('?search=')[1])}`)}&per_page=100`)
     .then(response => {
       if (response.ok) return response.text()
       throw new Error('err')
