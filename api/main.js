@@ -1,3 +1,3 @@
 export default (req) => {
-  req.respond({ body: req.url.split('?search=')[1] });
+  req.respond({ body: decodeURIComponent(req.url.split('?search=')[1]) });
 };
