@@ -16,7 +16,7 @@ export default (req) => {
           site: 'GitHub'
         })
       })
-      req.respond({ body: res })
+      req.respond({ body: Array.isArray(data.items) })
     });
   /*.then(data => {
     data = data.json().contents;
