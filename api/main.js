@@ -4,10 +4,10 @@ export default (req) => {
   // GitHub
   fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${decodeURIComponent(req.url.split('?search=')[1])}`)}&per_page=100`)
     .then(response => {
-      if (response.ok) return response.text()
+      if (response.ok) return response.json()
       throw new Error('err')
     }).then((a) => {
-     /* var data = JSON.parse(a);
+      var data = JSON.parse(a);
       for(var i of data.items) {
         res.push({
           type: 'github',
@@ -16,8 +16,7 @@ export default (req) => {
           link: i.html_url,
           site: 'GitHub'
         });
-      }*/
-      console.log(a);
+      }
       req.respond({ body: res });
     });
 };
