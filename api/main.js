@@ -8,7 +8,7 @@ export default (req) => {
       throw new Error('err')
     }).then((a) => {
       var data = a;
-      data.items.forEach(v => {
+      data.items.forEach(i => {
         res.push({
           type: 'github',
           title: i.full_name,
