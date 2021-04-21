@@ -16,7 +16,7 @@ export default (req) => {
           site: 'GitHub'
         })
       })*/
-      req.respond({ body: data.total_count })
+      req.respond({ body: data })
     });
   /*.then(data => {
     data = data.json().contents;
