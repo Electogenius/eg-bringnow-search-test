@@ -16,7 +16,7 @@ export default (req) => {
           site: 'GitHub'
         })
       })*/
-      req.respond({ body: typeof data })
+      req.respond({ body: typeof JSON.parse(data) })
     });
   /*.then(data => {
     data = data.json().contents;
