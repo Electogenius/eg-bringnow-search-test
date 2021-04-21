@@ -7,7 +7,7 @@ export default (req) => {
       throw new Error('Network response was not ok.')
     })
     .then(data => {
-      data = data.contents;
+      data = JSON.parse(data.contents);
       data.items.forEach(i => {
         res.push({
           type: 'github',
