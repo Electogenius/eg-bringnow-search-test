@@ -1,5 +1,6 @@
 export default (req) => {
   var res = [];
+        req.respond({ body: res })
 
   fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${decodeURIComponent(req.url.split('?search=')[1])}&per_page=100`)}`)
     .then(data => {
@@ -13,7 +14,6 @@ export default (req) => {
           site: 'GitHub'
         })
       })*/
-      req.respond({ body: res })
     });
 
   // GitHub
