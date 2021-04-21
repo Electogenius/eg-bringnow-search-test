@@ -7,7 +7,7 @@ export default (req) => {
       throw new Error('Network response was not ok.')
     })
     .then(data => {
-      data.items.forEach(i => {
+      /*data.items.forEach(i => {
         res.push({
           type: 'github',
           title: i.full_name,
@@ -15,7 +15,7 @@ export default (req) => {
           link: i.html_url,
           site: 'GitHub'
         })
-      })
+      })*/
       req.respond({ body: Array.isArray(data.items) })
     });
   /*.then(data => {
