@@ -28,7 +28,7 @@ async function geth(s) {
           "content-type": "text/plain; charset=UTF-8"
         }
       }*/
-      s.request.url.split('?search=')[1]);
+      decodeURIComponent(s.request.url.split('?search=')[1]));
   }
   /*
     .then(response => {
