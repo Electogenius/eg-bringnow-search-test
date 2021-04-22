@@ -10,9 +10,9 @@ addEventListener("fetch", (event) => {
       t.forEach(v => {
         res.push({
           type: 'github',
-          title: t[p].full_name,
-          desc: t[p].description || 'No description available.',
-          link: t[p].html_url,
+          title: v.full_name,
+          desc: v.description || 'No description available.',
+          link: v.html_url,
           site: 'GitHub'
         })
       });
