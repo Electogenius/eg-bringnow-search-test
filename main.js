@@ -23,7 +23,7 @@ async function geth(s) {
       })
     });
     return new Response(
-      res,
+      JSON.stringify(res),
       {
         headers: {
           "content-type": "text/plain; charset=UTF-8"
