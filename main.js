@@ -15,7 +15,6 @@ async function geth(s) {
     var data = await t.json();
     data.items.forEach(v => {
       res.push({
-        type: 'github',
         title: v.full_name,
         desc: v.description || 'No description available.',
         link: v.html_url,
@@ -23,12 +22,13 @@ async function geth(s) {
       })
     });
     return new Response(
-      JSON.stringify(res),
+     /* JSON.stringify(res),
       {
         headers: {
           "content-type": "text/plain; charset=UTF-8"
         }
-      });
+      }*/
+      s.request.url);
   }
   /*
     .then(response => {
