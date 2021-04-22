@@ -1,6 +1,36 @@
+var res = [];
 addEventListener("fetch", (event) => {
-  var res = [];
-  fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${decodeURIComponent(req.url.split('?search=')[1])}&per_page=100`)}`)
+  /* .then(() => {
+       const response = new Response(res, {
+         headers: { 'content-type': 'text/plain' },
+       });
+       event.respondWith(response);
+     })*/
+  event.respondWith(geth());
+});
+
+async function geth() {
+  var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${decodeURIComponent(req.url.split('?search=')[1])}&per_page=100`)}`)
+  if (t.ok) {
+    var data = await t.json();
+    data.items.forEach(v => {
+      res.push({
+        type: 'github',
+        title: v.full_name,
+        desc: v.description || 'No description available.',
+        link: v.html_url,
+        site: 'GitHub'
+      })
+    });
+    return new Response(
+      res,
+      {
+        headers: {
+          "content-type": "application/json; charset=UTF-8"
+        }
+      });
+  }
+  /*
     .then(response => {
       if (response.ok) return response.text()
       throw new Error('Network response was not ok.')
@@ -10,16 +40,11 @@ addEventListener("fetch", (event) => {
       t.forEach(v => {
         res.push({
           type: 'github',
-          title: v.full_name,
-          desc: v.description || 'No description available.',
-          link: v.html_url,
+          title: t[p].full_name,
+          desc: t[p].description || 'No description available.',
+          link: t[p].html_url,
           site: 'GitHub'
         })
       });
-    }).then(() => {
-      const response = new Response(res, {
-        headers: { 'content-type': 'text/plain' },
-      });
-      event.respondWith(response);
-    })
-});
+    })*/
+}
