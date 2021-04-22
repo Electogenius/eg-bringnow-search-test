@@ -26,7 +26,7 @@ async function geth(s) {
       res,
       {
         headers: {
-          "content-type": "application/json; charset=UTF-8"
+          "content-type": "text/plain; charset=UTF-8"
         }
       });
   }
