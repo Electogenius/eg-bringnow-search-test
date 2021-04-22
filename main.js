@@ -10,7 +10,7 @@ addEventListener("fetch", (event) => {
 });
 
 async function geth(s) {
-  var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${decodeURIComponent(new URL(s.request.url).searchParams.get('search'))}&per_page=100`)}`)
+  var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${decodeURIComponent(decodeURIComponent(s.request.url).split('?search=')[1])}&per_page=100`)}`)
   if (t.ok) {
     var data = await t.json();
     data.items.forEach(v => {
@@ -22,13 +22,12 @@ async function geth(s) {
       })
     });
     return new Response(
-     /* JSON.stringify(res),
+      JSON.stringify(res),
       {
         headers: {
           "content-type": "text/plain; charset=UTF-8"
         }
-      }*/
-      decodeURIComponent(s.request.url).split('?search=')[1]);
+      });
   }
   /*
     .then(response => {
