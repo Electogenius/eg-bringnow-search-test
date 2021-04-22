@@ -7,7 +7,7 @@ export default (req) => {
       throw new Error('Network response was not ok.')
     })
     .then(data => {
-      /*data.items.forEach(i => {
+      JSON.parse(data).items.forEach(i => {
         res.push({
           type: 'github',
           title: i.full_name,
@@ -15,8 +15,8 @@ export default (req) => {
           link: i.html_url,
           site: 'GitHub'
         })
-      })*/
-      req.respond({ body: `${JSON.parse(data).total_count}` })
+      })
+      req.respond({ body: res })
     });
   /*.then(data => {
     data = data.json().contents;
