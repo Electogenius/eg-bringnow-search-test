@@ -6,11 +6,11 @@ addEventListener("fetch", (event) => {
        });
        event.respondWith(response);
      })*/
-  event.respondWith(geth());
+  event.respondWith(geth(event));
 });
 
-async function geth() {
-  var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${decodeURIComponent(req.url.split('?search=')[1])}&per_page=100`)}`)
+async function geth(s) {
+  var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${decodeURIComponent(s.url.split('?search=')[1])}&per_page=100`)}`)
   if (t.ok) {
     var data = await t.json();
     data.items.forEach(v => {
