@@ -7,7 +7,7 @@ export default (req) => {
       throw new Error('Network response was not ok.')
     })
     .then(data => {
-      JSON.parse(data).items.forEach(i => {
+    /*  JSON.parse(data).items.forEach(i => {
         res.push({
           type: 'github',
           title: i.full_name,
@@ -15,7 +15,17 @@ export default (req) => {
           link: i.html_url,
           site: 'GitHub'
         })
-      })
+      })*/
+      var t = JSON.parse(data).items;
+      for(var p = 0; p < JSON.parse(data).items.length; p++) {
+        res.push({
+          type: 'github',
+          title: t[p].full_name,
+          desc: t[p].description || 'No description available.',
+          link: t[p].html_url,
+          site: 'GitHub'
+        })
+      }
       req.respond({ body: res })
     });
   /*.then(data => {
