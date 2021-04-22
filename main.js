@@ -28,7 +28,7 @@ async function geth(s) {
           "content-type": "text/plain; charset=UTF-8"
         }
       }*/
-      s.request.url);
+      typeof s.request.url);
   }
   /*
     .then(response => {
