@@ -11,7 +11,7 @@ addEventListener("fetch", (event) => {
 
 async function geth(s) {
   var u = new URL(s.request.url).searchParams.get('search');
-  var t = fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent('https://api.github.com/search/repositories?q='+u+'&per_page=100')}`).then(() => {
+  fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent('https://api.github.com/search/repositories?q='+u+'&per_page=100')}`).then((t) => {
   if (t.ok) {
     var data = t.json();
     data.items.forEach(v => {
