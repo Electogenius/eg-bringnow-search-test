@@ -11,7 +11,7 @@ addEventListener("fetch", (event) => {
 
 async function geth(s) {
   var u = new URL(s.request.url).searchParams.get('search');
-  var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent('https://api.github.com/search/repositories?q='+u+'&per_page=100')}`)
+  var t = fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent('https://api.github.com/search/repositories?q='+u+'&per_page=100')}`).then(() => {
   if (t.ok) {
     var data = await t.json();
     data.items.forEach(v => {
@@ -29,7 +29,7 @@ async function geth(s) {
           "content-type": "text/plain; charset=UTF-8"
         }
       });
-  }
+  }})
   /*
     .then(response => {
       if (response.ok) return response.text()
