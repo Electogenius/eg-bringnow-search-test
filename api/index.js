@@ -28,7 +28,7 @@ app.get('/', async (req, re) => {
         site: 'GitLab'
       })
     });
-    re.send(JSON.stringify(res))
+    re.end(JSON.stringify(res))
   }
 })
 /*
