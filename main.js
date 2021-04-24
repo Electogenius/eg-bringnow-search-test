@@ -1,11 +1,5 @@
 var res = [];
 addEventListener("fetch", (event) => {
-  /* .then(() => {
-       const response = new Response(res, {
-         headers: { 'content-type': 'text/plain' },
-       });
-       event.respondWith(response);
-     })*/
   event.respondWith(geth(event));
 });
 
@@ -24,28 +18,10 @@ async function geth(s) {
     });
     return new Response(
       JSON.stringify(res),
-      //`https://api.allorigins.win/raw?url=https://api.github.com/search/repositories?q=${u}&per_page=100` ,
       {
         headers: {
           "content-type": "text/plain; charset=UTF-8"
         }
       });
   }
-  /*
-    .then(response => {
-      if (response.ok) return response.text()
-      throw new Error('Network response was not ok.')
-    })
-    .then(data => {
-      var t = JSON.parse(data).items;
-      t.forEach(v => {
-        res.push({
-          type: 'github',
-          title: t[p].full_name,
-          desc: t[p].description || 'No description available.',
-          link: t[p].html_url,
-          site: 'GitHub'
-        })
-      });
-    })*/
 }
