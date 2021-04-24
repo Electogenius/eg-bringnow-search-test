@@ -21,7 +21,7 @@ async function geth(s) {
   }
 
   //Gitlab
-  t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://gitlab.com/api/v4/projects?search=${u}`)}`);
+ /* t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://gitlab.com/api/v4/projects?search=${u}`)}`);
   if (t.ok) {
     var data = await t.json();
     data.forEach(v => {
@@ -31,10 +31,10 @@ async function geth(s) {
         link: v.web_url,
         site: 'GitLab'
       })
-    });
+    });*/
 
 
-    //res = arr.sort(() => Math.random() - 0.5);
+    res = arr.sort(() => Math.random() - 0.5);
 
     return new Response(
       JSON.stringify(res),
@@ -43,6 +43,6 @@ async function geth(s) {
           "content-type": "text/plain; charset=UTF-8"
         }
       });
-  }
+//  }
 
 }
