@@ -18,6 +18,16 @@ async function geth(s) {
         site: 'GitHub'
       })
     });
+    
+      res = arr.sort(() => Math.random() - 0.5);
+
+    return new Response(
+      JSON.stringify(res),
+      {
+        headers: {
+          "content-type": "text/plain; charset=UTF-8"
+        }
+      });
   }
 
   //Gitlab
@@ -34,15 +44,7 @@ async function geth(s) {
     });*/
 
 
-    res = arr.sort(() => Math.random() - 0.5);
-
-    return new Response(
-      JSON.stringify(res),
-      {
-        headers: {
-          "content-type": "text/plain; charset=UTF-8"
-        }
-      });
+  
 //  }
 
 }
