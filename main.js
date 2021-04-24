@@ -4,9 +4,7 @@ addEventListener("fetch", (event) => {
 });
 
 async function geth(s) {
-  var u = new URL(s.request.url).search.substring(1); //search
-
-  // GitHub
+  var u = new URL(s.request.url).search.substring(1);
   var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${u}&per_page=100`)}`)
   if (t.ok) {
     var data = await t.json();
@@ -18,29 +16,12 @@ async function geth(s) {
         site: 'GitHub'
       })
     });
-  }
-
-  //Gitlab
-  var p = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://gitlab.com/api/v4/projects?search=${u}`)}`);
-  if (p.ok) {
-    var data = await p.json();
-    data.forEach(v => {
-      res.push({
-        title: v.name_with_namespace,
-        desc: v.description || 'No description available.',
-        link: v.web_url,
-        site: 'GitLab'
-      })
-    });
-  }
-  
-  res = res.sort(() => Math.random() - 0.5);
-  
-  return new Response(
+    return new Response(
       JSON.stringify(res),
       {
         headers: {
           "content-type": "text/plain; charset=UTF-8"
         }
       });
+  }
 }
