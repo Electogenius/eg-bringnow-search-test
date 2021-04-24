@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const app = express();
 var res = [];
 
-app.get('/:se', async (req, re) => {
+app.get('/?search=:se', async (req, re) => {
   const { se } = req.params;
   var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${se}&per_page=100`)}`)
   if (t.ok) {
