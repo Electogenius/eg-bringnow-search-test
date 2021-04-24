@@ -31,7 +31,9 @@ app.get('/:se', async (req, re) => {
     re.send(JSON.stringify(res))
   }
 })
-
+/*
 app.listen(8080, () => {
   console.log('Running')
 })
+*/
+module.exports = app;
