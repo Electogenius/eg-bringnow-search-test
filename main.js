@@ -10,7 +10,7 @@ addEventListener("fetch", (event) => {
 });
 
 async function geth(s) {
-  var u = new URLSearchParams(s.request.url.search.substring(1)).get('search');
+  var u = new URL(s.request.url).search.substring(1).get('search');
   var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${u}&per_page=100`)}`)
   if (t.ok) {
     var data = await t.json();
