@@ -19,7 +19,7 @@ async function geth(s) {
     var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://gitlab.com/api/v4/projects?search=${u}`)}`)
     if (t.ok) {
       var data = await t.json();
-      data.items.forEach(v => {
+      data.forEach(v => {
         res.push({
           title: v.name_with_namespace,
           desc: v.description || 'No description available.',
