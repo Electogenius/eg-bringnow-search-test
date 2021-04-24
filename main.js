@@ -32,8 +32,8 @@ async function geth(s) {
         site: 'GitLab'
       })
     });
-  }
-  
+    
+      
   res = arr.sort(() => Math.random() - 0.5);
   
   return new Response(
@@ -43,4 +43,6 @@ async function geth(s) {
           "content-type": "text/plain; charset=UTF-8"
         }
       });
+  }
+
 }
