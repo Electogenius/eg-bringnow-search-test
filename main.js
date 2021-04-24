@@ -5,7 +5,7 @@ addEventListener("fetch", (event) => {
 
 async function geth(s) {
   var u = new URL(s.request.url).search.substring(1); //search
-  
+
   // GitHub
   var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${u}&per_page=100`)}`)
   if (t.ok) {
@@ -18,11 +18,11 @@ async function geth(s) {
         site: 'GitHub'
       })
     });
-  } 
-  
+  }
+
   //Gitlab
   t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://gitlab.com/api/v4/projects?search=${u}`)}`);
-  if(t.ok) {
+  if (t.ok) {
     var data = await t.json();
     data.forEach(v => {
       res.push({
@@ -32,11 +32,11 @@ async function geth(s) {
         site: 'GitLab'
       })
     });
-    
-      
-  res = arr.sort(() => Math.random() - 0.5);
-  
-  return new Response(
+
+
+    //res = arr.sort(() => Math.random() - 0.5);
+
+    return new Response(
       JSON.stringify(res),
       {
         headers: {
