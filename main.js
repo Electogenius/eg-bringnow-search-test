@@ -11,7 +11,7 @@ addEventListener("fetch", (event) => {
 
 async function geth(s) {
   var u = new URL(s.request.url).searchParams.get('search');
-  var t = await fetch(`https://api.allorigins.win/raw?url=https://api.github.com/search/repositories?q=${u}&per_page=100`)
+  var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${u}&per_page=100`)}`)
   if (t.ok) {
     var data = await t.json();
     data.items.forEach(v => {
@@ -23,7 +23,8 @@ async function geth(s) {
       })
     });
     return new Response(
-      `https://api.allorigins.win/raw?url=https://api.github.com/search/repositories?q=${u}&per_page=100` ,
+      JSON.stringify(res),
+      //`https://api.allorigins.win/raw?url=https://api.github.com/search/repositories?q=${u}&per_page=100` ,
       {
         headers: {
           "content-type": "text/plain; charset=UTF-8"
