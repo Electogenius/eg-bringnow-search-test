@@ -16,12 +16,25 @@ async function geth(s) {
         site: 'GitHub'
       })
     });
-    return new Response(
-      JSON.stringify(res),
-      {
-        headers: {
-          "content-type": "text/plain; charset=UTF-8"
-        }
+    var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://gitlab.com/api/v4/projects?search=${u}`)}`)
+    if (t.ok) {
+      var data = await t.json();
+      data.items.forEach(v => {
+        res.push({
+          title: v.name_with_namespace,
+          desc: v.description || 'No description available.',
+          link: v.web_url,
+          site: 'GitLab'
+        })
       });
+
+      return new Response(
+        JSON.stringify(res),
+        {
+          headers: {
+            "content-type": "text/plain; charset=UTF-8"
+          }
+        });
+    }
   }
 }
