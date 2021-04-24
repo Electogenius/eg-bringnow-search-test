@@ -22,7 +22,7 @@ async function geth(s) {
 
   //Gitlab
   var p = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://gitlab.com/api/v4/projects?search=${u}`)}`);
-  if (t.ok) {
+  if (p.ok) {
     var data = await t.json();
     data.forEach(v => {
       res.push({
