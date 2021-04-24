@@ -23,7 +23,7 @@ async function geth(s) {
       })
     });
     return new Response(
-      /*JSON.stringify(res)*/`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${u}&per_page=100`)}`,
+      JSON.stringify(res)/*`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${u}&per_page=100`)}`*/,
       {
         headers: {
           "content-type": "text/plain; charset=UTF-8"
