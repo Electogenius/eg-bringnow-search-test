@@ -7,7 +7,7 @@ async function geth(s) {
   var u = new URL(s.request.url).search.substring(1); //search
 
   // GitHub
-  /*var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${u}&per_page=100`)}`)
+  var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${u}&per_page=100`)}`)
   if (t.ok) {
     var data = await t.json();
     data.items.forEach(v => {
@@ -18,10 +18,10 @@ async function geth(s) {
         site: 'GitHub'
       })
     });
-  }*/
+  }
 
   //Gitlab
-  var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://gitlab.com/api/v4/projects?search=${u}`)}`);
+  t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://gitlab.com/api/v4/projects?search=${u}`)}`);
   if (t.ok) {
     var data = await t.json();
     data.forEach(v => {
@@ -34,7 +34,7 @@ async function geth(s) {
     });
   }
   
-  res = arr.sort(() => Math.random() - 0.5);
+  res = res.sort(() => Math.random() - 0.5);
   
   return new Response(
       JSON.stringify(res),
