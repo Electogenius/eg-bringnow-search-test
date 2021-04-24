@@ -28,6 +28,7 @@ app.get('/api', async (req, re) => {
         site: 'GitLab'
       })
     });
+    res.sort(function(a, b){return 0.5 - Math.random()});
     re.end(JSON.stringify(res))
   }
 })
