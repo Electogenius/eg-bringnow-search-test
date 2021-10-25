@@ -31,6 +31,18 @@ app.get('/api', async (req, re) => {
     res.sort(function(a, b){return 0.5 - Math.random()});
     re.end(JSON.stringify(res))
   }
+  var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.npms.io/v2/search?q=${se}`)}`)
+  if(t.ok) {
+    var data = await t.json();
+    data.results.forEach(v => {
+      res.push({
+        title: v.package.name,
+        desc: v.package.description || 'No description available',
+        link: 'https://npmjs.com/package/' + v.package.name,
+        site: 'NPM Registry'
+      })
+    })
+  }
 })
 /*
 app.listen(8080, () => {
