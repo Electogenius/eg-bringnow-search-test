@@ -44,9 +44,5 @@ app.get('/api', async (req, re) => {
     })
   }
 })
-/*
-app.listen(8080, () => {
-  console.log('Running')
-})
-*/
+
 module.exports = app;
