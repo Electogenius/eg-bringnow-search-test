@@ -5,7 +5,7 @@ var res = [];
 
 app.get('/api', async (req, re) => {
   const se = req.query.search;
-  var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${se}&per_page=100`)}`)
+  var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.github.com/search/repositories?q=${se}&per_page=20`)}`)
   if (t.ok) {
     var data = await t.json();
     data.items.forEach(v => {
