@@ -61,6 +61,4 @@ app.get('/api', (req, re) => {
   })
 })
 
-app.listen(3000)
-
 module.exports = app;
