@@ -47,18 +47,37 @@ async function npm(se) {
   }
 }
 
+async function stackoverflow(se) {
+  var t = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://api.stackexchange.com/2.3/search/advanced?q=${se}&page=1&pagesize=20&site=stackoverflow`)}`)
+
+  if (t.ok) {
+    var data = await t.json();
+    return data.items.map(v => {
+      return {
+        title: v.title,
+        desc: v.tags.join(', '),
+        link: v.link,
+        site: 'Stack Overflow'
+      }
+    })
+  }
+}
+
 app.get('/api', (req, re) => {
   const se = req.query.search;
 
   Promise.all([
     gh(se),
     gitlab(se),
-    npm(se)
+    npm(se),
+    stackoverflow(se)
   ]).then(v => {
     const res = v.flat().sort(() => 0.5 - Math.random());
 
     re.end(JSON.stringify(res));
   })
 })
+
+if (process.argv.includes('listen')) app.listen(3000)
 
 module.exports = app;
